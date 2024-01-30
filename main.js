@@ -15,6 +15,11 @@ function changeColor(e) {
   e.currentTarget.style.backgroundColor = "yellow";
 }
 
+// Changes boxes to random color (rainbow)
+function colorRainbow(e) {
+  e.currentTarget.style.backgroundColor = 
+}
+
 // Erase function
 function erase(e) {
   e.currentTarget.style.backgroundColor = "lightgrey";
@@ -61,11 +66,51 @@ document.querySelector("#resize").addEventListener("click", function() {
   container.style.setProperty('--dimension', dimension);
   createGrid(person)
   addEventListenerToChangeColor()
+  addEventListenerToDarken()
 })
 
-// Erase Button
+// Erase Button TODOOOOOOOOOO
 let useErase = false;
 document.querySelector("#erase").addEventListener("click", () => {
   useErase = !useErase; // Toggle the flag
   addEventListenerToBoxes(useErase); // Update the event listeners based on the flag
 });
+
+
+// Changes darkness of box
+
+// let box = document.querySelector(".box");
+const darkenBox = (event) => {
+  let box = event.target;
+  let currentBrightness = box.dataset.brightness || 110;
+  currentBrightness = parseInt(currentBrightness) - 10;
+  console.log(currentBrightness)
+  if (currentBrightness >= 0) {
+      box.style.filter = `brightness(${currentBrightness}%)`;
+      box.dataset.brightness = currentBrightness;
+  }
+};
+
+function addEventListenerToDarken() {
+  let boxes = document.querySelectorAll(".box");
+  boxes.forEach(function(box) {
+    box.addEventListener("mouseover", darkenBox)
+  });
+}
+
+addEventListenerToDarken()
+
+
+// Adds rainbow color
+
+document.querySelector("#randomColor").addEventListener("click", () => {
+  colorRainbow();
+})
+
+function colorRainbow() {
+  var color1 = Math.floor(Math.random() * 256);
+  var color2 = Math.floor(Math.random() * 256);
+  var color3 = Math.floor(Math.random() * 256);
+  let box = document.querySelector(".box");
+  box = 'rgb(' + color1 + ',' + color2 + ',' + color3 + ')';
+}
