@@ -15,11 +15,6 @@ function changeColor(e) {
   e.currentTarget.style.backgroundColor = "yellow";
 }
 
-// Changes boxes to random color (rainbow)
-function colorRainbow(e) {
-  e.currentTarget.style.backgroundColor = 
-}
-
 // Erase function
 function erase(e) {
   e.currentTarget.style.backgroundColor = "lightgrey";
@@ -46,6 +41,10 @@ function addEventListenerToBoxes(useErase) {
   boxes.forEach(function(box) {
     box.removeEventListener("mouseover", useErase ? changeColor : erase); // Remove the other event listener
     box.addEventListener("mouseover", useErase ? erase : changeColor); // Add the correct event listener
+    if (useErase) {
+      box.removeEventListener("mouseover", darkenBox)
+      box.style.filter = "";
+    }
   });
 }
 
@@ -69,7 +68,8 @@ document.querySelector("#resize").addEventListener("click", function() {
   addEventListenerToDarken()
 })
 
-// Erase Button TODOOOOOOOOOO
+// Erase Button
+//TODO: fix color grading on erase, it doesn't color grade
 let useErase = false;
 document.querySelector("#erase").addEventListener("click", () => {
   useErase = !useErase; // Toggle the flag
@@ -79,7 +79,6 @@ document.querySelector("#erase").addEventListener("click", () => {
 
 // Changes darkness of box
 
-// let box = document.querySelector(".box");
 const darkenBox = (event) => {
   let box = event.target;
   let currentBrightness = box.dataset.brightness || 110;
@@ -101,16 +100,23 @@ function addEventListenerToDarken() {
 addEventListenerToDarken()
 
 
+// Ads click event listener to rainbow button
+document.querySelector("#randomColor").addEventListener("click", addEventListenerToRainbow);
+
 // Adds rainbow color
-
-document.querySelector("#randomColor").addEventListener("click", () => {
-  colorRainbow();
-})
-
 function colorRainbow() {
   var color1 = Math.floor(Math.random() * 256);
   var color2 = Math.floor(Math.random() * 256);
   var color3 = Math.floor(Math.random() * 256);
-  let box = document.querySelector(".box");
-  box = 'rgb(' + color1 + ',' + color2 + ',' + color3 + ')';
+  return 'rgb(' + color1 + ',' + color2 + ',' + color3 + ')';
+}
+
+// Adds eventlistener to box to random color (rainbow)
+function addEventListenerToRainbow() {
+  let boxes = document.querySelectorAll(".box");
+  boxes.forEach(function(box) {
+    box.addEventListener("mouseover", function() {
+      box.style.backgroundColor = colorRainbow();
+    });
+  });
 }
