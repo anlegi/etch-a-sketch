@@ -17,4 +17,15 @@
   background-color: lightgrey;
 }
 
+.center-wrapper {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+button {
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+}
