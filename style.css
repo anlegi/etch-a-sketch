@@ -29,3 +29,9 @@ button {
   height: 40px;
   cursor: pointer;
 }
+
+
+#grid-size {
+  width: 300px;
+  margin: 15px 0;
+}

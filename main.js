@@ -1,13 +1,20 @@
 const container = document.querySelector(".container");
 let dimension = 5
+const gridSizeInput = document.querySelector("#grid-size")
+const gridSizeValueDisplay = document.querySelector("#grid-size-value")
 
 // grid 16x16
 function createGrid(dimension) {
+  container.style.setProperty('--dimension', dimension); // Update the --dimension variable to the new dimension
+
+  removeAllChildren(container); // Remove all existing children/grid squares
+
   for(let i = 0; i < (dimension * dimension); i++) {
     let box = document.createElement("div");
     box.classList.add("box");
     container.appendChild(box);
     }
+  addEventListenerToChangeColor() // after reset you can draw again
 }
 
 // Changes color of boxes
@@ -54,19 +61,39 @@ container.style.setProperty('--dimension', dimension);
 addEventListenerToBoxes(false);
 
 // Reset button
+// const reset = document.querySelector("#reset");
+// reset.addEventListener("click", () => document.location.reload());
+
 const reset = document.querySelector("#reset");
-reset.addEventListener("click", () => document.location.reload());
+reset.addEventListener("click", () => {
+    // Read the current value from the slider
+    const currentSize = parseInt(gridSizeInput.value, 10);
+
+    // Clear the existing grid
+    removeAllChildren(container);
+
+    // Update the CSS variable and the grid itself
+    container.style.setProperty('--dimension', currentSize);
+    createGrid(currentSize);
+
+    // Update displayed value
+    if (gridSizeValueDisplay) {
+        gridSizeValueDisplay.textContent = currentSize;
+    }
+    addEventListenerToDarken()
+});
+
 
 // Resize Button
-document.querySelector("#resize").addEventListener("click", function() {
-  let person = prompt("Please enter a number of squares")
-  removeAllChildren(container)
-  dimension = person
-  container.style.setProperty('--dimension', dimension);
-  createGrid(person)
-  addEventListenerToChangeColor()
-  addEventListenerToDarken()
-})
+// document.querySelector("#resize").addEventListener("click", function() {
+//   let person = prompt("Please enter a number of squares")
+//   removeAllChildren(container)
+//   dimension = person
+//   container.style.setProperty('--dimension', dimension);
+//   createGrid(person)
+//   addEventListenerToChangeColor()
+//   addEventListenerToDarken()
+// })
 
 // Erase Button
 //TODO: fix color grading on erase, it doesn't color grade
@@ -76,6 +103,9 @@ document.querySelector("#erase").addEventListener("click", () => {
   addEventListenerToBoxes(useErase); // Update the event listeners based on the flag
 });
 
+function erase(e) {
+  e.currentTarget.style.backgroundColor = "lightgrey";
+}
 
 // Changes darkness of box
 
@@ -120,3 +150,13 @@ function addEventListenerToRainbow() {
     });
   });
 }
+
+
+gridSizeInput.addEventListener("input", () => {
+  const newSize = gridSizeInput.value;
+  gridSizeValueDisplay.textContent = newSize
+  removeAllChildren(container)
+  createGrid(newSize)
+  addEventListenerToChangeColor()
+  addEventListenerToDarken()
+});
