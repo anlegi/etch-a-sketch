@@ -3,19 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <script src="main.js" defer></script>
-  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <script src="https://kit.fontawesome.com/43fe8a676a.js" crossorigin="anonymous"></script>
   <script></script>
   <title>Etch-A-Sketch</title>
 </head>
 <body>
   <div class="center-wrapper">
     <div class="container"></div>
-    <label for="grid-size">Grid Size</label>
-    <input type="range" id="grid-size" min="1" max="100" value="16" step="1">
-    <span id="grid-size-value">16</span>
-    <button id="reset">Reset</button>
-    <button id="erase">Erase</button>
-    <button id="randomColor">Rainbow</button>
+    <div class="buttons">
+      <label for="grid-size"><span id="grid-size-value">16</span></label>
+      <input type="range" id="grid-size" min="1" max="100" value="16" step="1">
+
+      <button id="reset">Clear</button>
+      <button id="erase">Erase</button>
+      <button id="randomColor">Rainbow</button>
+    </div>
   </div>
+  <footer>
+    <p><i class="fa-brands fa-github"></i> <a href= "https://github.com/anlegi" target=”_blank” attribute=>Anhnam Le Giang</a> - </i> 2024</p>
+  </footer>
 </body>
 </html>

@@ -151,7 +151,6 @@ function addEventListenerToRainbow() {
   });
 }
 
-
 gridSizeInput.addEventListener("input", () => {
   const newSize = gridSizeInput.value;
   gridSizeValueDisplay.textContent = newSize
