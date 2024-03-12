@@ -2,6 +2,8 @@
 
 Welcome to the digital Etch-A-Sketch! Unleash your creativity with a classic toy reinvented for the web. Draw, erase, and shake your way to fun pixel art creations.
 
+Visit the deployed Sketch Board [here](https://anlegi.github.io/etch-a-sketch/).
+
 ## Features 🚀
 
 - **Draw Mode**: Click and drag across the grid to paint.
@@ -9,14 +11,6 @@ Welcome to the digital Etch-A-Sketch! Unleash your creativity with a classic toy
 - **Rainbow Mode**: Add a splash of color to your designs with rainbow mode.
 - **Adjustable Grid Size**: Customize the complexity of your canvas with an adjustable grid size.
 - **Clear Button**: Start over with a blank canvas with just one click.
-
-## Setup 🛠
-
-To get started with your very own Etch-A-Sketch:
-
-1. Clone this repository to your local machine.
-2. Open `index.html` in your favorite web browser.
-3. Start sketching!
 
 ## Controls 🎛
 
@@ -36,11 +30,6 @@ To get started with your very own Etch-A-Sketch:
 ## Contributing 🤝
 
 Feel free to fork this repo and contribute. Whether it's adding new features, improving the documentation, or fixing bugs, all contributions are welcome!
-
-## Acknowledgements 🙏
-
-- [Anhnam](https://github.com/anlegi)  for initiating this project.
-- FontAwesome for providing the beautiful icons used in this project.
 
 ## Happy Sketching! ✏️🌈
 
